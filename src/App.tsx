@@ -13,13 +13,13 @@ import {SearchOutlined, Shop, ShoppingCart, ShoppingCartOutlined} from "@mui/ico
 
 
 const homeCards = [
-    {"name": "Foods and drinks"},
-    {"name": "Beauty shop"},
-    {"name": "Gardner"},
-    {"name": "Barber shop"},
-    {"name": "Second hand"},
-    {"name": "Building"},
-    {"name": "Car maintenance"}
+    {"name": "Foods and drinks", borderColor: "#749A44", bgColor: "#D5FFA0", bgImage: "", widthSize: 4, heightSize: 2},
+    {"name": "Beauty shop", borderColor: "", bgColor: "", bgImage: "", widthSize: 4, heightSize: 2},
+    {"name": "Gardner", borderColor: "", bgColor: "", bgImage: "", widthSize: 2, heightSize: 2},
+    {"name": "Barber shop", borderColor: "", bgColor: "", bgImage: "", widthSize: 2, heightSize: 2},
+    {"name": "Second hand", borderColor: "", bgColor: "", bgImage: "", widthSize: 2, heightSize: 4},
+    {"name": "Building", borderColor: "", bgColor: "", bgImage: "", widthSize: 2, heightSize: 4},
+    {"name": "Car maintenance", borderColor: "", bgColor: "", bgImage: "", widthSize: 4, heightSize: 2}
 ]
 
 
@@ -125,48 +125,33 @@ function App() {
                     <Box sx={{
                         padding: "32px 32px 32px 16px",
                         display: "grid",
-                        gridTemplateRows: "repeat(12, 80px)",
-                        gridTemplateColumns: "repeat(12, 80px)",
-                        gridGap: "16px"
+                        gridTemplateRows: "repeat(8, 96px)",
+                        gridTemplateColumns: "repeat(8, 96px) ",
+                        gridGap: "16px",
+                        maxWidth: "960px",
+                        mx:"auto"
                     }}>
 
                         {homeCards.map((card, index) => {
                             let startingCol = 1;
-                            let spanCol = 3;
+                            const spanCol = card.widthSize;
                             let startingRow = index * 2 + 1;
-                            let spanRow = 2;
+                            const spanRow = card.heightSize;
 
                             if (index > 3) {
-                                startingCol = 7;
-                                spanCol = 3;
+                                startingCol = 5;
                                 startingRow = (index - 4) * 2 + 1;
-                                spanRow = 4
                             }
-
-                            if (index <= 1 && index < 3 || index === 6) {
-                                spanCol = 6
+                            if (index === 3 || index === 5) {
+                                startingRow -= 2;
+                                startingCol += 2;
                             }
-
-                            if(index === 3){
-                                startingCol = 4;
-                                startingRow-=2;
-                            }
-
-                            if(index === 5){
-                                startingRow = 1;
-                                startingCol = 10;
-
-                            }
-
-                            if(index === 6){
-                                spanRow = 2;
-                            }
-
 
 
                             return (
                                 <Box sx={{
-                                    border: "4px solid #749A44",
+                                    border: `4px solid ${card.borderColor}`,
+                                    background: card.bgColor,
                                     width: "100%",
                                     height: "auto",
                                     borderRadius: "32px",
