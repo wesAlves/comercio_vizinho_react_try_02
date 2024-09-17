@@ -1,19 +1,27 @@
 import React, {useState} from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import {
-    AppBar, Box,
+    AppBar, Avatar, Box,
     Button,
-    Container,
     Drawer,
     IconButton,
-    styled,
     Toolbar,
     Typography,
-    useScrollTrigger
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import {SearchOutlined, Shop, ShoppingCart, ShoppingCartOutlined} from "@mui/icons-material";
+
+
+const homeCards = [
+    {"name": "Foods and drinks"},
+    {"name": "Beauty shop"},
+    {"name": "Gardner"},
+    {"name": "Barber shop"},
+    {"name": "Second hand"},
+    {"name": "Building"},
+    {"name": "Car maintenance"}
+]
+
 
 function App() {
 
@@ -28,10 +36,18 @@ function App() {
 
     return (
         <Box sx={{display: "flex", flexDirection: "column", height: "100vh"}}>
-            <AppBar
-                sx={{position: "relative", top: 0, left: 0, right: 0}}
+            <AppBar elevation={0}
+                    sx={{
+                        position: "relative",
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        background: "white",
+                        dropShadow: "none",
+                        border: "1px solid #c2c2c2"
+                    }}
             >
-                <Toolbar>
+                <Toolbar sx={{color: "black"}}>
                     <IconButton
                         size="large"
                         edge="start"
@@ -45,11 +61,16 @@ function App() {
                     <Typography variant="h6" component="div" sx={{flexGrow: 1}}>
                         News
                     </Typography>
-                    <Button color="inherit">Login</Button>
+                    <IconButton sx={{mr: "8px", border: "2px solid #c2c2c2", background: "#F4F4F4"}}>
+                        <ShoppingCartOutlined sx={{color: "#c2c2c2"}}/>
+                    </IconButton>
+                    <Avatar>
+                        WB
+                    </Avatar>
                 </Toolbar>
             </AppBar>
 
-            <Box style={{position: "relative"}} sx={{display: "flex", height: "100%", background: "#f00"}}>
+            <Box style={{position: "relative"}} sx={{display: "flex", height: "100%"}}>
                 <Drawer
                     sx={{
                         width: drawerWidth,
@@ -59,7 +80,8 @@ function App() {
                         '& .MuiDrawer-paper': {
                             width: drawerWidth,
                             boxSizing: 'border-box',
-                        }
+                        },
+                        borderRight: "1px solid #c2c2c2",
                     }}
                     open={open} variant={"persistent"}
                     PaperProps={{
@@ -77,7 +99,90 @@ function App() {
                     </nav>
                 </Drawer>
 
-                <div style={{width: "100%", flex: 1, background: "yellow"}}>content</div>
+                <Box sx={{width: "100%"}}>
+
+                    <Box sx={{
+                        height: "64px",
+                        borderBottom: "1px solid #c2c2c2",
+                        paddingX: "16px",
+                        display: "flex",
+                        alignItems: "center"
+                    }}>
+                        <Typography variant={"h1"} fontSize={24} sx={{p: "0", m: 0}}>Home</Typography>
+                        <Box sx={{marginLeft: "auto"}}>
+                            <Button sx={{
+                                mr: "8px",
+                                border: "2px solid #c2c2c2",
+                                background: "#F4F4F4",
+                                borderRadius: "32px"
+                            }}>Filtros</Button>
+                            <IconButton sx={{mr: "8px", border: "2px solid #c2c2c2", background: "#F4F4F4"}}>
+                                <SearchOutlined sx={{color: "#c2c2c2"}}/>
+                            </IconButton>
+                        </Box>
+                    </Box>
+
+                    <Box sx={{
+                        padding: "32px 32px 32px 16px",
+                        display: "grid",
+                        gridTemplateRows: "repeat(12, 80px)",
+                        gridTemplateColumns: "repeat(12, 80px)",
+                        gridGap: "16px"
+                    }}>
+
+                        {homeCards.map((card, index) => {
+                            let startingCol = 1;
+                            let spanCol = 3;
+                            let startingRow = index * 2 + 1;
+                            let spanRow = 2;
+
+                            if (index > 3) {
+                                startingCol = 7;
+                                spanCol = 3;
+                                startingRow = (index - 4) * 2 + 1;
+                                spanRow = 4
+                            }
+
+                            if (index <= 1 && index < 3 || index === 6) {
+                                spanCol = 6
+                            }
+
+                            if(index === 3){
+                                startingCol = 4;
+                                startingRow-=2;
+                            }
+
+                            if(index === 5){
+                                startingRow = 1;
+                                startingCol = 10;
+
+                            }
+
+                            if(index === 6){
+                                spanRow = 2;
+                            }
+
+
+
+                            return (
+                                <Box sx={{
+                                    border: "4px solid #749A44",
+                                    width: "100%",
+                                    height: "auto",
+                                    borderRadius: "32px",
+                                    padding: "16px",
+                                    boxSizing: "border-box",
+                                    gridColumn: `${startingCol} / span ${spanCol}`,
+                                    gridRow: `${startingRow} / span ${spanRow}`
+                                }}
+                                     key={card.name}
+                                >{card.name}</Box>
+
+                            )
+                        })}
+                    </Box>
+
+                </Box>
             </Box>
         </Box>
     )
