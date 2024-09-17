@@ -4,7 +4,7 @@ import {
     AppBar, Avatar, Box,
     Button,
     Drawer,
-    IconButton,
+    IconButton, Paper,
     Toolbar,
     Typography,
 } from "@mui/material";
@@ -13,13 +13,62 @@ import {SearchOutlined, Shop, ShoppingCart, ShoppingCartOutlined} from "@mui/ico
 
 
 const homeCards = [
-    {"name": "Foods and drinks", borderColor: "#749A44", bgColor: "#D5FFA0", bgImage: "", widthSize: 4, heightSize: 2},
-    {"name": "Beauty shop", borderColor: "#670044", bgColor: "#FBBEEA", bgImage: "", widthSize: 4, heightSize: 2},
-    {"name": "Gardner", borderColor: "#053DCE", bgColor: "#A0B5FF", bgImage: "", widthSize: 2, heightSize: 2},
-    {"name": "Barber shop", borderColor: "#392600", bgColor: "#FFCEA0", bgImage: "", widthSize: 2, heightSize: 2},
-    {"name": "Second hand", borderColor: "#8D581A", bgColor: "#FFD9A0", bgImage: "", widthSize: 2, heightSize: 4},
-    {"name": "Building", borderColor: "#ffbb00", bgColor: "#FFD9A0", bgImage: "", widthSize: 2, heightSize: 4},
-    {"name": "Car maintenance", borderColor: "#737373", bgColor: "#bcbcbc", bgImage: "", widthSize: 4, heightSize: 2}
+    {
+        "name": "Foods and drinks",
+        borderColor: "#749A44",
+        bgColor: "#D5FFA0",
+        bgImage: "fresh.png",
+        widthSize: 4,
+        heightSize: 2
+    },
+    {
+        "name": "Beauty shop",
+        borderColor: "#670044",
+        bgColor: "#FBBEEA",
+        bgImage: "bauty_shop.png",
+        widthSize: 4,
+        heightSize: 2
+    },
+    {
+        "name": "Gardner",
+        borderColor: "#053DCE",
+        bgColor: "#A0B5FF",
+        bgImage: "gardner.png",
+        widthSize: 2,
+        heightSize: 2
+    },
+    {
+        "name": "Barber shop",
+        borderColor: "#392600",
+        bgColor: "#FFCEA0",
+        bgImage: "barber_shop.png",
+        widthSize: 2,
+        heightSize: 2
+    },
+    {
+        "name": "Second hand",
+        borderColor: "#8D581A",
+        bgColor: "#FFD9A0",
+        bgImage: "bicycle.png",
+        widthSize: 2,
+        heightSize: 4
+    },
+    {
+        "name": "Building",
+        borderColor: "#ffbb00",
+        bgColor: "#FFD9A0",
+        bgImage: "construction.png",
+        widthSize: 2,
+        heightSize: 4
+    },
+    {
+        "name": "Car maintenance",
+        borderColor: "#737373",
+        bgColor: "#bcbcbc",
+        bgImage: "car_maintenance.png",
+        widthSize: 4,
+        heightSize: 2
+    }
 ]
 
 
@@ -129,7 +178,7 @@ function App() {
                         gridTemplateColumns: "repeat(8, 96px) ",
                         gridGap: "16px",
                         maxWidth: "960px",
-                        mx:"auto"
+                        mx: "auto"
                     }}>
 
                         {homeCards.map((card, index) => {
@@ -151,7 +200,11 @@ function App() {
                             return (
                                 <Box sx={{
                                     border: `4px solid ${card.borderColor}`,
-                                    background: card.bgColor,
+                                    backgroundColor: card.bgColor,
+                                    backgroundImage: card.bgImage ? `url(/images/${card.bgImage})` : "url(/images/bicycle.png)",
+                                    backgroundRepeat: "no-repeat",
+                                    backgroundSize: "cover",
+                                    backgroundBlendMode: "multiply",
                                     width: "100%",
                                     height: "auto",
                                     borderRadius: "32px",
@@ -159,9 +212,25 @@ function App() {
                                     boxSizing: "border-box",
                                     gridColumn: `${startingCol} / span ${spanCol}`,
                                     gridRow: `${startingRow} / span ${spanRow}`,
+                                    position:"relative",
+                                    overflow: "hidden",
                                 }}
                                      key={card.name}
-                                >{card.name}</Box>
+                                >
+                                    <Box sx={{position:"absolute", top: 0, bottom:0, left:0, right:0, background:"#00000044"}}></Box>
+
+                                    <Typography variant={"h3"} sx={{
+                                        fontSize: "2.5rem",
+                                        fontWeight: "bold",
+                                        color: "white",
+                                        boxShadow: "var(--Paper-shadow)",
+                                        position:"relative",
+                                        zIndex:"1"
+                                    }}>
+                                        {card.name}
+                                    </Typography>
+
+                                </Box>
 
                             )
                         })}
