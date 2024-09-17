@@ -14,12 +14,12 @@ import {SearchOutlined, Shop, ShoppingCart, ShoppingCartOutlined} from "@mui/ico
 
 const homeCards = [
     {"name": "Foods and drinks", borderColor: "#749A44", bgColor: "#D5FFA0", bgImage: "", widthSize: 4, heightSize: 2},
-    {"name": "Beauty shop", borderColor: "", bgColor: "", bgImage: "", widthSize: 4, heightSize: 2},
-    {"name": "Gardner", borderColor: "", bgColor: "", bgImage: "", widthSize: 2, heightSize: 2},
-    {"name": "Barber shop", borderColor: "", bgColor: "", bgImage: "", widthSize: 2, heightSize: 2},
-    {"name": "Second hand", borderColor: "", bgColor: "", bgImage: "", widthSize: 2, heightSize: 4},
-    {"name": "Building", borderColor: "", bgColor: "", bgImage: "", widthSize: 2, heightSize: 4},
-    {"name": "Car maintenance", borderColor: "", bgColor: "", bgImage: "", widthSize: 4, heightSize: 2}
+    {"name": "Beauty shop", borderColor: "#670044", bgColor: "#FBBEEA", bgImage: "", widthSize: 4, heightSize: 2},
+    {"name": "Gardner", borderColor: "#053DCE", bgColor: "#A0B5FF", bgImage: "", widthSize: 2, heightSize: 2},
+    {"name": "Barber shop", borderColor: "#392600", bgColor: "#FFCEA0", bgImage: "", widthSize: 2, heightSize: 2},
+    {"name": "Second hand", borderColor: "#8D581A", bgColor: "#FFD9A0", bgImage: "", widthSize: 2, heightSize: 4},
+    {"name": "Building", borderColor: "#ffbb00", bgColor: "#FFD9A0", bgImage: "", widthSize: 2, heightSize: 4},
+    {"name": "Car maintenance", borderColor: "#737373", bgColor: "#bcbcbc", bgImage: "", widthSize: 4, heightSize: 2}
 ]
 
 
@@ -158,7 +158,7 @@ function App() {
                                     padding: "16px",
                                     boxSizing: "border-box",
                                     gridColumn: `${startingCol} / span ${spanCol}`,
-                                    gridRow: `${startingRow} / span ${spanRow}`
+                                    gridRow: `${startingRow} / span ${spanRow}`,
                                 }}
                                      key={card.name}
                                 >{card.name}</Box>
