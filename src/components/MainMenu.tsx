@@ -1,9 +1,17 @@
 import {Box, MenuItem, Typography} from "@mui/material";
 import {HomeOutlined} from "@mui/icons-material";
+import {useEffect, useState} from "react";
 
-export function MainMenu(props: { width: number, open: boolean }) {
+export function MainMenu(props: { open: boolean }) {
+
+    const [drawerWidth, setDrawerWidth] = useState<number>(240)
+
+    useEffect(() => {
+        setDrawerWidth( props.open ? 240: 64);
+    }, [props.open])
+
     return <Box sx={{
-        width: props.width,
+        width: drawerWidth,
         transitionDuration: "300ms",
         borderRight: "1px solid #c2c2c2",
         overflow: "hidden"

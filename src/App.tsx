@@ -8,13 +8,11 @@ import {MainContent} from "./components/MainContent.tsx";
 
 function App() {
 
-    const [drawerWidth, setDrawerWidth] = useState<number>(240)
 
     const [open, setOpen] = useState(true);
 
     const handleOpen = () => {
         setOpen(!open);
-        setDrawerWidth(drawerWidth === 240 ? 64 : 240);
     }
 
     return (
@@ -22,7 +20,7 @@ function App() {
             <CustomAppBar onClick={handleOpen}/>
 
             <Box style={{position: "relative"}} sx={{display: "flex", height: "100%"}}>
-                <MainMenu width={drawerWidth} open={open}/>
+                <MainMenu open={open}/>
                 <MainContent/>
             </Box>
 
