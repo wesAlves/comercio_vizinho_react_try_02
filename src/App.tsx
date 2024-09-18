@@ -1,14 +1,9 @@
-import React, {useState} from 'react'
+import {useState} from 'react'
 import './App.css'
-import {
-    AppBar, Avatar, Box,
-    Button,
-    IconButton, MenuItem,
-    Toolbar,
-    Typography,
-} from "@mui/material";
+import {AppBar, Avatar, Box, Button, IconButton, MenuItem, Toolbar, Typography,} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import {HomeOutlined, SearchOutlined, ShoppingCartOutlined} from "@mui/icons-material";
+import {HomeCard} from "./components/homeCard.tsx";
 
 
 const homeCards = [
@@ -222,52 +217,14 @@ function App() {
                                 startingRow = (index - 4) * 2 + 1;
                             }
                             if (index === 3 || index === 5) {
-                                startingRow -= 2;
                                 startingCol += 2;
+                                startingRow -= 2;
                             }
 
 
                             return (
-                                <Box sx={{
-                                    border: `4px solid ${card.borderColor}`,
-                                    backgroundColor: card.bgColor,
-                                    backgroundImage: card.bgImage ? `url(/images/${card.bgImage})` : "url(/images/bicycle.png)",
-                                    backgroundRepeat: "no-repeat",
-                                    backgroundSize: "cover",
-                                    backgroundBlendMode: "multiply",
-                                    width: "100%",
-                                    height: "auto",
-                                    borderRadius: "32px",
-                                    padding: "16px",
-                                    boxSizing: "border-box",
-                                    gridColumn: `${startingCol} / span ${spanCol}`,
-                                    gridRow: `${startingRow} / span ${spanRow}`,
-                                    position: "relative",
-                                    overflow: "hidden",
-                                }}
-                                     key={card.name}
-                                >
-                                    <Box sx={{
-                                        position: "absolute",
-                                        top: 0,
-                                        bottom: 0,
-                                        left: 0,
-                                        right: 0,
-                                        background: "#00000044"
-                                    }}></Box>
-
-                                    <Typography variant={"h3"} sx={{
-                                        fontSize: "2.5rem",
-                                        fontWeight: "bold",
-                                        color: "white",
-                                        boxShadow: "var(--Paper-shadow)",
-                                        position: "relative",
-                                        zIndex: "1"
-                                    }}>
-                                        {card.name}
-                                    </Typography>
-
-                                </Box>
+                                <HomeCard key={card.name} card={card} startingCol={startingCol} spanCol={spanCol}
+                                          startingRow={startingRow} spanRow={spanRow}/>
 
                             )
                         })}
