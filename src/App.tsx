@@ -9,7 +9,7 @@ import {
     Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import {SearchOutlined, Shop, ShoppingCart, ShoppingCartOutlined} from "@mui/icons-material";
+import {HomeOutlined, SearchOutlined, Shop, ShoppingCart, ShoppingCartOutlined} from "@mui/icons-material";
 
 
 const homeCards = [
@@ -108,7 +108,7 @@ function App() {
                         <MenuIcon/>
                     </IconButton>
                     <Typography variant="h6" component="div" sx={{flexGrow: 1}}>
-                        News
+                        Comercio vizinho
                     </Typography>
                     <IconButton sx={{mr: "8px", border: "2px solid #c2c2c2", background: "#F4F4F4"}}>
                         <ShoppingCartOutlined sx={{color: "#c2c2c2"}}/>
@@ -120,34 +120,48 @@ function App() {
             </AppBar>
 
             <Box style={{position: "relative"}} sx={{display: "flex", height: "100%"}}>
-                <Drawer
-                    sx={{
-                        width: drawerWidth,
-                        position: "relative !important",
-                        flexShrink: 0,
-                        transitionDuration: "300ms",
-                        '& .MuiDrawer-paper': {
-                            width: drawerWidth,
-                            boxSizing: 'border-box',
-                        },
-                        borderRight: "1px solid #c2c2c2",
-                    }}
-                    open={open} variant={"persistent"}
-                    PaperProps={{
-                        elevation: 100,
-                        sx: {position: "relative", top: "0px", left: 0, bottom: 0, height: "100%"}
-                    }}
-                >
-
+                <Box sx={{
+                    width: drawerWidth,
+                    transitionDuration: "300ms",
+                    borderRight: "1px solid #c2c2c2",
+                    overflow: "hidden"
+                }}>
                     <nav>
-                        <ul>
-                            <li>Home</li>
-                            <li>Produtos</li>
-                            <li>Serviços</li>
+                        <ul style={{listStyle: "none", margin: 0, padding: 0,}}>
+                            <li style={{
+                                display: "flex",
+                                gap: "8px",
+                                alignItems: "center",
+                                justifyContent: "start",
+                                height: "48px",
+                                padding: "16px",
+                                boxSizing:"border-box",
+                                width: "100%",
+                                border: "1px solid #c2c2c2"
+                            }}>
+                                <HomeOutlined/>
+                                <Typography sx={{display: open ? "block" : "none"}}>
+                                    Home
+                                </Typography>
+
+                            </li>
+                            <li style={{display: "flex", gap: "8px", padding: "16px"}}>
+                                <HomeOutlined/>
+                                <Typography sx={{display: open ? "block" : "none"}}>
+                                    Produtos
+                                </Typography>
+
+                            </li>
+                            <li style={{display: "flex", gap: "8px", padding: "16px"}}>
+                                <HomeOutlined/>
+                                <Typography sx={{display: open ? "block" : "none"}}>
+                                    Serviços
+                                </Typography>
+
+                            </li>
                         </ul>
                     </nav>
-                </Drawer>
-
+                </Box>
                 <Box sx={{width: "100%"}}>
 
                     <Box sx={{
@@ -212,20 +226,27 @@ function App() {
                                     boxSizing: "border-box",
                                     gridColumn: `${startingCol} / span ${spanCol}`,
                                     gridRow: `${startingRow} / span ${spanRow}`,
-                                    position:"relative",
+                                    position: "relative",
                                     overflow: "hidden",
                                 }}
                                      key={card.name}
                                 >
-                                    <Box sx={{position:"absolute", top: 0, bottom:0, left:0, right:0, background:"#00000044"}}></Box>
+                                    <Box sx={{
+                                        position: "absolute",
+                                        top: 0,
+                                        bottom: 0,
+                                        left: 0,
+                                        right: 0,
+                                        background: "#00000044"
+                                    }}></Box>
 
                                     <Typography variant={"h3"} sx={{
                                         fontSize: "2.5rem",
                                         fontWeight: "bold",
                                         color: "white",
                                         boxShadow: "var(--Paper-shadow)",
-                                        position:"relative",
-                                        zIndex:"1"
+                                        position: "relative",
+                                        zIndex: "1"
                                     }}>
                                         {card.name}
                                     </Typography>
