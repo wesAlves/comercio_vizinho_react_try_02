@@ -3,13 +3,12 @@ import './App.css'
 import {
     AppBar, Avatar, Box,
     Button,
-    Drawer,
-    IconButton, Paper,
+    IconButton, MenuItem,
     Toolbar,
     Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import {HomeOutlined, SearchOutlined, Shop, ShoppingCart, ShoppingCartOutlined} from "@mui/icons-material";
+import {HomeOutlined, SearchOutlined, ShoppingCartOutlined} from "@mui/icons-material";
 
 
 const homeCards = [
@@ -128,37 +127,54 @@ function App() {
                 }}>
                     <nav>
                         <ul style={{listStyle: "none", margin: 0, padding: 0,}}>
-                            <li style={{
+                            <MenuItem style={{
+                                display: "flex",
+                                gap: "8px",
+                                alignItems: "center",
+                                justifyContent: "start",
+                                height: "48px",
+                                // padding: "16px",
+                                boxSizing: "border-box",
+                                width: "100%",
+                            }}>
+                                    <HomeOutlined/>
+                                    <Typography sx={{display: open ? "block" : "none"}}>
+                                        Home
+                                    </Typography>
+
+                            </MenuItem>
+                            <MenuItem selected={true} style={{
                                 display: "flex",
                                 gap: "8px",
                                 alignItems: "center",
                                 justifyContent: "start",
                                 height: "48px",
                                 padding: "16px",
-                                boxSizing:"border-box",
+                                boxSizing: "border-box",
                                 width: "100%",
-                                border: "1px solid #c2c2c2"
                             }}>
-                                <HomeOutlined/>
-                                <Typography sx={{display: open ? "block" : "none"}}>
-                                    Home
-                                </Typography>
-
-                            </li>
-                            <li style={{display: "flex", gap: "8px", padding: "16px"}}>
                                 <HomeOutlined/>
                                 <Typography sx={{display: open ? "block" : "none"}}>
                                     Produtos
                                 </Typography>
 
-                            </li>
-                            <li style={{display: "flex", gap: "8px", padding: "16px"}}>
+                            </MenuItem>
+                            <MenuItem style={{
+                                display: "flex",
+                                gap: "8px",
+                                alignItems: "center",
+                                justifyContent: "start",
+                                height: "48px",
+                                padding: "16px",
+                                boxSizing: "border-box",
+                                width: "100%",
+                            }}>
                                 <HomeOutlined/>
                                 <Typography sx={{display: open ? "block" : "none"}}>
                                     Serviços
                                 </Typography>
 
-                            </li>
+                            </MenuItem>
                         </ul>
                     </nav>
                 </Box>
@@ -188,7 +204,7 @@ function App() {
                     <Box sx={{
                         padding: "32px 32px 32px 16px",
                         display: "grid",
-                        gridTemplateRows: "repeat(8, 96px)",
+                        gridTemplateRows: "repeat(6, 96px)",
                         gridTemplateColumns: "repeat(8, 96px) ",
                         gridGap: "16px",
                         maxWidth: "960px",
