@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import {useState} from 'react'
 import './App.css'
 import {Box,} from "@mui/material";
 import {CustomAppBar} from "./components/CustomAppBar.tsx";
@@ -21,7 +21,11 @@ function App() {
 
             <Box style={{position: "relative"}} sx={{display: "flex", height: "100%"}}>
                 <MainMenu open={open}/>
-                <Box as={Outlet} sx={{flex:1}} />
+
+                <div style={{flex: 1}}>
+                    <Outlet/>
+                </div>
+
             </Box>
 
         </Box>
