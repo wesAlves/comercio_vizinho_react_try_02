@@ -14,7 +14,7 @@ import '@fontsource/roboto/700.css';
 import "./index.css"
 import ErrorPage404 from "./page/errorPages/404.tsx";
 import ProductsPage from "./page/products";
-import {MainContent} from "./components/MainContent.tsx";
+import {Home} from "./page/home.tsx";
 
 const router = createBrowserRouter([
     {
@@ -22,10 +22,14 @@ const router = createBrowserRouter([
         element: <App/>,
         errorElement: <ErrorPage404/>,
         children: [
-            {path: "/", element: <MainContent/>},
+            {path: "/", element: <Home/>},
             {
                 path: "/products", element: <ProductsPage/>
-            }]
+            },
+            {
+                path: "/services", element: <ProductsPage/>
+            }
+            ]
     },
 ]);
 

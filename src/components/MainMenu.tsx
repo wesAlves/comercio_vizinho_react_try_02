@@ -1,6 +1,7 @@
 import {Box, MenuItem, Typography} from "@mui/material";
 import {HomeOutlined} from "@mui/icons-material";
 import {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
 
 export function MainMenu(props: { open: boolean }) {
 
@@ -18,48 +19,46 @@ export function MainMenu(props: { open: boolean }) {
     }}>
         <nav>
             <ul style={{listStyle: "none", margin: 0, padding: 0,}}>
-                <MenuItem style={{
+                <MenuItem as={Link} style={{
                     display: "flex",
                     gap: "8px",
                     alignItems: "center",
                     justifyContent: "start",
                     height: "48px",
-                    // padding: "16px",
                     boxSizing: "border-box",
                     width: "100%",
-                }}>
+                }} to={"/"}>
                     <HomeOutlined/>
                     <Typography sx={{display: props.open ? "block" : "none"}}>
                         Home
                     </Typography>
 
                 </MenuItem>
-                <MenuItem selected={true} style={{
+                <MenuItem as={Link} selected={true} style={{
                     display: "flex",
                     gap: "8px",
                     alignItems: "center",
                     justifyContent: "start",
                     height: "48px",
-                    padding: "16px",
                     boxSizing: "border-box",
                     width: "100%",
-                }}>
+                }}
+                to={"/products"}>
                     <HomeOutlined/>
                     <Typography sx={{display: props.open ? "block" : "none"}}>
                         Produtos
                     </Typography>
 
                 </MenuItem>
-                <MenuItem style={{
+                <MenuItem as={Link} style={{
                     display: "flex",
                     gap: "8px",
                     alignItems: "center",
                     justifyContent: "start",
                     height: "48px",
-                    padding: "16px",
                     boxSizing: "border-box",
                     width: "100%",
-                }}>
+                }} to={"/services"}>
                     <HomeOutlined/>
                     <Typography sx={{display: props.open ? "block" : "none"}}>
                         Serviços
