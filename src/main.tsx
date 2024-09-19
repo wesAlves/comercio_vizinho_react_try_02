@@ -12,10 +12,10 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import "./index.css"
-import ErrorPage404 from "./page/errorPages/404.tsx";
-import {ProductsPage} from "./page/products";
-import {Index} from "./page/home";
-import {ServicesPage} from "./page/services";
+import ErrorPage404 from "./pages/errorPages/404.tsx";
+import {ProductsPage} from "./pages/products";
+import {Index} from "./pages/home";
+import {ServicesPage} from "./pages/services";
 
 const router = createBrowserRouter([
     {
