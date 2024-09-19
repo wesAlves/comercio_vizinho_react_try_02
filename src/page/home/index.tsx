@@ -1,6 +1,6 @@
 import {Box, Button, IconButton, Typography} from "@mui/material";
 import {SearchOutlined} from "@mui/icons-material";
-import {HomeCard} from "../components/homeCard.tsx";
+import {HomeCard} from "../../components/homeCard.tsx";
 
 const homeCards = [
     {
@@ -61,7 +61,7 @@ const homeCards = [
     }
 ]
 
-export function Home() {
+export function Index() {
     return <Box sx={{width: "100%", flex:1}}>
 
         <Box sx={{

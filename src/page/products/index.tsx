@@ -1,6 +1,8 @@
-export default function ProductsPage() {
+const ProductsPage = () => {
     return (
         <>
         <h1>Produtos</h1></>
     )
 }
+
+export { ProductsPage };
