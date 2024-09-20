@@ -1,7 +1,11 @@
 import {Box, Button, IconButton, Typography} from "@mui/material";
-import {SearchOutlined} from "@mui/icons-material";
+import {ArrowBack, ExitToApp, SearchOutlined} from "@mui/icons-material";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 
-const PageTitleBar = (props:{title:string}) => {
+const PageTitleBar = (props: { title: string, isDetail?: boolean }) => {
+
+    const location = useLocation();
+
     return <Box sx={{
         height: "64px",
         borderBottom: "1px solid #c2c2c2",
@@ -9,6 +13,10 @@ const PageTitleBar = (props:{title:string}) => {
         display: "flex",
         alignItems: "center"
     }}>
+        {props.isDetail &&
+            <IconButton as={Link} to={`/${location.pathname.split("/").slice(1, -1)}`}><ArrowBack/></IconButton>}
+
+
         <Typography variant={"h1"} fontSize={24} sx={{p: "0", m: 0}}>{props.title}</Typography>
         <Box sx={{marginLeft: "auto"}}>
             <Button sx={{
