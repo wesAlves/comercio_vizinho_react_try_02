@@ -18,17 +18,20 @@ const PageTitleBar = (props: { title: string, isDetail?: boolean }) => {
 
 
         <Typography variant={"h1"} fontSize={24} sx={{p: "0", m: 0}}>{props.title}</Typography>
-        <Box sx={{marginLeft: "auto"}}>
-            <Button sx={{
-                mr: "8px",
-                border: "2px solid #c2c2c2",
-                background: "#F4F4F4",
-                borderRadius: "32px"
-            }}>Filtros</Button>
-            <IconButton sx={{mr: "8px", border: "2px solid #c2c2c2", background: "#F4F4F4"}}>
-                <SearchOutlined sx={{color: "#c2c2c2"}}/>
-            </IconButton>
-        </Box>
+
+        {!props.isDetail &&
+            <Box sx={{marginLeft: "auto"}}>
+                <Button sx={{
+                    mr: "8px",
+                    border: "2px solid #c2c2c2",
+                    background: "#F4F4F4",
+                    borderRadius: "32px"
+                }}>Filtros</Button>
+                <IconButton sx={{mr: "8px", border: "2px solid #c2c2c2", background: "#F4F4F4"}}>
+                    <SearchOutlined sx={{color: "#c2c2c2"}}/>
+                </IconButton>
+            </Box>
+        }
     </Box>;
 }
 
