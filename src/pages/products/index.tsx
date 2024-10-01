@@ -1,7 +1,6 @@
 import {PageTitleBar} from "../../components/pageTitleBar.tsx";
-import {Box, Button, Card, CardActions, CardContent, Chip, Typography} from "@mui/material";
+import {Box, Typography} from "@mui/material";
 import {ProductCard} from "../../components/cards/productCard.tsx";
-import {useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
 import cv_api from "../../apis/cv_api.ts";
 
