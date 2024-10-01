@@ -2,6 +2,7 @@ import {Box, Button, IconButton, Typography} from "@mui/material";
 import {SearchOutlined} from "@mui/icons-material";
 import {HomeCard} from "../../components/homeCard.tsx";
 import {PageTitleBar} from "../../components/pageTitleBar.tsx";
+import cv_api from "../../apis/cv_api.ts";
 
 const homeCards = [
     {
@@ -65,6 +66,9 @@ const homeCards = [
 
 
 export function Index() {
+
+    cv_api.get("/goods").then(response => {console.log(response)})
+
     return <Box sx={{width: "100%", flex: 1}}>
 
         <PageTitleBar title={"Home"}/>
