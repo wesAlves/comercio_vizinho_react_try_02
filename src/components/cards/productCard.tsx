@@ -15,7 +15,7 @@ const ProductCard = (props: { id: string | number, bg?: string, chipLabel: strin
             }}
                   elevation={3}>
                 <CardActions>
-                    <Chip label={"Produto da estação"} sx={{
+                    <Chip label={props.chipLabel} sx={{
                         border: "2px solid #59B121",
                         background: "#dff2d23c",
                         height: "32px",
