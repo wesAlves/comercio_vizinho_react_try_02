@@ -21,8 +21,8 @@ const ProductDetails = () => {
     return (
         <>
             <PageTitleBar title={`Detalhe do produto: ${product?.name}`} isDetail={true}/>
-            <Box sx={{p: "32px"}}>
 
+            <Box sx={{p: "32px"}}>
                 <Card sx={{mt: "32px", border: "1px solid #d9d9d9", borderRaidus: "16px", width: 1200, mx: "auto"}}>
                     <Box sx={{display: "flex", alignItems: "center"}}>
                         <CardMedia
@@ -66,9 +66,9 @@ const ProductDetails = () => {
                                 </Box>
 
                                 <Box>
-                                    <IconButton><Remove /></IconButton>
-                                    <Input type={"text"} defaultValue={0} />
-                                    <IconButton><Add /></IconButton>
+                                    <IconButton><Remove/></IconButton>
+                                    <Input type={"text"} defaultValue={0}/>
+                                    <IconButton><Add/></IconButton>
                                     <Button>
                                         <ShoppingCartOutlined/>
                                         Add to cart
@@ -83,8 +83,35 @@ const ProductDetails = () => {
                     </Box>
                 </Card>
 
-                <div>Related products</div>
-                <div>Products from same seller</div>
+                <Box sx={{mt:"64px"}}>
+                    <Typography component={"h5"}>Related products</Typography>
+
+                    <Box sx={{display: "flex", gap:16, justifyContent: "center"}} component={"ul"}>
+
+                        <li>Produto</li>
+                        <li>Produto</li>
+                        <li>Produto</li>
+                        <li>Produto</li>
+                        <li>Produto</li>
+                        <li>Produto</li>
+
+                    </Box>
+                </Box>
+
+                <Box>
+                    <Typography component={"h5"}>Products from same seller</Typography>
+
+                    <Box sx={{display: "flex", gap:16, justifyContent: "center"}} component={"ul"}>
+
+                        <li>Produto</li>
+                        <li>Produto</li>
+                        <li>Produto</li>
+                        <li>Produto</li>
+                        <li>Produto</li>
+                        <li>Produto</li>
+
+                    </Box>
+                </Box>
 
             </Box>
         </>
