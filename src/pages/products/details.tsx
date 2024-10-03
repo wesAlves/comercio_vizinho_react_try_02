@@ -2,7 +2,8 @@ import {PageTitleBar} from "../../components/pageTitleBar.tsx";
 import {useEffect, useState} from "react";
 import {useLocation, useParams} from "react-router-dom";
 import cv_api from "../../apis/cv_api.ts";
-import {Box, Card, CardContent, CardMedia, Typography} from "@mui/material";
+import {Box, Button, Card, CardContent, CardMedia, IconButton, Input, Typography} from "@mui/material";
+import {Add, PlusOne, Remove, ShoppingCart, ShoppingCartOutlined, TextIncrease} from "@mui/icons-material";
 
 const ProductDetails = () => {
 
@@ -21,9 +22,9 @@ const ProductDetails = () => {
         <>
             <PageTitleBar title={`Detalhe do produto: ${product?.name}`} isDetail={true}/>
             <Box sx={{p: "32px"}}>
-                <div>Controllers</div>
+
                 <Card sx={{mt: "32px", border: "1px solid #d9d9d9", borderRaidus: "16px", width: 1200, mx: "auto"}}>
-                    <Box sx={{display: "flex", alignItems:"center"}}>
+                    <Box sx={{display: "flex", alignItems: "center"}}>
                         <CardMedia
                             component={"img"} sx={{width: 600}}
                             image="/images/bicycle.png"
@@ -44,10 +45,7 @@ const ProductDetails = () => {
                                 <Typography component={"span"}
                                             sx={{fontSize: '.8em'}}>Tipo:</Typography> {product?.goodsType}
                             </Box>
-                            <Box sx={{fontSize: "1.6em"}}>
-                                <Typography component={"span"}
-                                            sx={{fontSize: '.8em'}}>Preço:</Typography> {product?.price}
-                            </Box>
+
                             <Box sx={{fontSize: "1.6em"}}>
                                 <Typography component={"span"}
                                             sx={{fontSize: '.8em'}}>Venddido por:</Typography> {product?.user.name}
@@ -60,10 +58,34 @@ const ProductDetails = () => {
                                 <Typography component={"span"}
                                             sx={{fontSize: '.8em'}}>E-mail:</Typography> {product?.user.email}
                             </Box>
+
+                            <Box sx={{mt: "32px"}}>
+                                <Box sx={{fontSize: "1.6em"}}>
+                                    <Typography component={"span"}
+                                                sx={{fontSize: '.8em'}}>Preço:</Typography> {product?.price}
+                                </Box>
+
+                                <Box>
+                                    <IconButton><Remove /></IconButton>
+                                    <Input type={"text"} defaultValue={0} />
+                                    <IconButton><Add /></IconButton>
+                                    <Button>
+                                        <ShoppingCartOutlined/>
+                                        Add to cart
+                                    </Button>
+                                </Box>
+
+
+                            </Box>
+
                         </CardContent>
 
                     </Box>
                 </Card>
+
+                <div>Related products</div>
+                <div>Products from same seller</div>
+
             </Box>
         </>
 
