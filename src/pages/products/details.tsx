@@ -32,35 +32,35 @@ const ProductDetails = () => {
 
                         />
                         <CardContent>
-                            <Box sx={{color: "#d9d9d9"}}>Id: {product?.id}</Box>
-                            <Box sx={{fontSize: "1.6em"}}>
+                            <Box sx={{color: "#d9d9d9"}}  component={'h3'}>Id: {product?.id}</Box>
+                            <Box sx={{fontSize: "1em"}} component={'h3'}>
                                 <Typography component={"span"}
                                             sx={{fontSize: '.8em'}}>Nome:</Typography> {product?.name}
                             </Box>
-                            <Box sx={{fontSize: "1.6em"}}>
+                            <Box sx={{fontSize: "1em"}}  component={'h3'}>
                                 <Typography component={"span"}
                                             sx={{fontSize: '.8em'}}>Descrição:</Typography> {product?.description}
                             </Box>
-                            <Box sx={{fontSize: "1.6em"}}>
+                            <Box sx={{fontSize: "1em"}}  component={'h3'}>
                                 <Typography component={"span"}
                                             sx={{fontSize: '.8em'}}>Tipo:</Typography> {product?.goodsType}
                             </Box>
 
-                            <Box sx={{fontSize: "1.6em"}}>
+                            <Box sx={{fontSize: "1em"}}  component={'h3'}>
                                 <Typography component={"span"}
                                             sx={{fontSize: '.8em'}}>Venddido por:</Typography> {product?.user.name}
                             </Box>
-                            <Box sx={{fontSize: "1.6em"}}>
+                            <Box sx={{fontSize: "1em"}}  component={'h3'}>
                                 <Typography component={"span"}
                                             sx={{fontSize: '.8em'}}>Telefone:</Typography> {product?.user.phoneNumber}
                             </Box>
-                            <Box sx={{fontSize: "1.6em"}}>
+                            <Box sx={{fontSize: "1em"}}  component={'h3'}>
                                 <Typography component={"span"}
-                                            sx={{fontSize: '.8em'}}>E-mail:</Typography> {product?.user.email}
+                                            sx={{fontSize: '.8em'}}>E-mail:</Typography> <a href={`mailto:${product?.user.email}`}>{product?.user.email}</a>
                             </Box>
 
-                            <Box sx={{mt: "32px"}}>
-                                <Box sx={{fontSize: "1.6em"}}>
+                            <Box sx={{mt: "32px"}}  component={'h3'}>
+                                <Box sx={{fontSize: "1em"}}>
                                     <Typography component={"span"}
                                                 sx={{fontSize: '.8em'}}>Preço:</Typography> {product?.price}
                                 </Box>
