@@ -3,6 +3,8 @@ import {SearchOutlined} from "@mui/icons-material";
 import {HomeCard} from "../../components/homeCard.tsx";
 import {PageTitleBar} from "../../components/pageTitleBar.tsx";
 import cv_api from "../../apis/cv_api.ts";
+import {ShopCart, ShopCartType} from "../../contexts/shopCart/shopCart.ts";
+import {useState} from "react";
 
 const homeCards = [
     {
@@ -64,49 +66,54 @@ const homeCards = [
 ]
 
 
-
 export function Index() {
 
-    cv_api.get("/goods").then(response => {console.log(response)})
+    cv_api.get("/goods").then(response => {
+        // console.log(response)
+        return response
+    })
 
-    return <Box sx={{width: "100%", flex: 1}}>
+    const [shopCart, setShopCart] = useState<ShopCartType[]>([{id: "0"}, {id:"1"}]);
 
-        <PageTitleBar title={"Home"}/>
+    return (<ShopCart.Provider value={shopCart}>
+            <Box sx={{width: "100%", flex: 1}}>
+                <PageTitleBar title={"Home"}/>
 
-        <Box sx={{
-            padding: "32px 32px 32px 16px",
-            display: "grid",
-            gridTemplateRows: "repeat(6, 96px)",
-            gridTemplateColumns: "repeat(8, 96px) ",
-            gridGap: "16px",
-            maxWidth: "960px",
-            mx: "auto"
-        }}>
+                <Box sx={{
+                    padding: "32px 32px 32px 16px",
+                    display: "grid",
+                    gridTemplateRows: "repeat(6, 96px)",
+                    gridTemplateColumns: "repeat(8, 96px) ",
+                    gridGap: "16px",
+                    maxWidth: "960px",
+                    mx: "auto"
+                }}>
 
-            {homeCards.map((card, index) => {
+                    {homeCards.map((card, index) => {
 
-                let startingCol = 1;
-                const spanCol = card.widthSize;
-                let startingRow = index * 2 + 1;
-                const spanRow = card.heightSize;
+                        let startingCol = 1;
+                        const spanCol = card.widthSize;
+                        let startingRow = index * 2 + 1;
+                        const spanRow = card.heightSize;
 
-                if (index > 3) {
-                    startingCol = 5;
-                    startingRow = (index - 4) * 2 + 1;
-                }
-                if (index === 3 || index === 5) {
-                    startingCol += 2;
-                    startingRow -= 2;
-                }
+                        if (index > 3) {
+                            startingCol = 5;
+                            startingRow = (index - 4) * 2 + 1;
+                        }
+                        if (index === 3 || index === 5) {
+                            startingCol += 2;
+                            startingRow -= 2;
+                        }
 
 
-                return (
-                    <HomeCard key={card.name} card={card} startingCol={startingCol} spanCol={spanCol}
-                              startingRow={startingRow} spanRow={spanRow}/>
+                        return (
+                            <HomeCard key={card.name} card={card} startingCol={startingCol} spanCol={spanCol}
+                                      startingRow={startingRow} spanRow={spanRow}/>
 
-                )
-            })}
-        </Box>
-
-    </Box>;
+                        )
+                    })}
+                </Box>
+            </Box>
+        </ShopCart.Provider>
+    );
 }

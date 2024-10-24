@@ -1,25 +1,36 @@
 import {PageTitleBar} from "../../components/pageTitleBar.tsx";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {useLocation, useParams} from "react-router-dom";
 import cv_api from "../../apis/cv_api.ts";
 import {Box, Button, Card, CardContent, CardMedia, IconButton, Input, Typography} from "@mui/material";
 import {Add, PlusOne, Remove, ShoppingCart, ShoppingCartOutlined, TextIncrease} from "@mui/icons-material";
+import {ShopCart} from "../../contexts/shopCart/shopCart.ts";
 
 const ProductDetails = () => {
 
     const {productId} = useParams();
     const [product, setProduct] = useState(); //TODO: add inStock quantity in BE
-    product["inStock"] = 10;
+    if (product) {
+        product["inStock"] = 10;
+    }
+
+    const shopCart = useContext(ShopCart);
+
 
     const [quantity, setQuantity] = useState(1);
 
     useEffect(() => {
         cv_api.get(`/goods/products/${productId}`).then((res) => {
             setProduct(res.data);
-            console.log(res.data)
         })
     }, [productId])
 
+
+    const addToCart = () => {
+        shopCart.push(product?.id)
+        console.log("context", shopCart)
+
+    }
 
     return (
         <>
@@ -34,6 +45,8 @@ const ProductDetails = () => {
                             alt="Live from space album cover"
 
                         />
+
+                        {/*TODO:Loop that block*/}
                         <CardContent>
                             <Box sx={{color: "#d9d9d9"}} component={'h3'}>Id: {product?.id}</Box>
                             <Box sx={{fontSize: "1em"}} component={'h3'}>
@@ -93,7 +106,7 @@ const ProductDetails = () => {
                                         }
 
                                     }}><Add/></IconButton>
-                                    <Button>
+                                    <Button onClick={addToCart}>
                                         <ShoppingCartOutlined/>
                                         Add to cart
                                     </Button>
