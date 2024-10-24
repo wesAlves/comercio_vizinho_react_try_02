@@ -8,7 +8,10 @@ import {Add, PlusOne, Remove, ShoppingCart, ShoppingCartOutlined, TextIncrease} 
 const ProductDetails = () => {
 
     const {productId} = useParams();
-    const [product, setProduct] = useState();
+    const [product, setProduct] = useState(); //TODO: add inStock quantity in BE
+    product["inStock"] = 10;
+
+    const [quantity, setQuantity] = useState(1);
 
     useEffect(() => {
         cv_api.get(`/goods/products/${productId}`).then((res) => {
@@ -32,43 +35,64 @@ const ProductDetails = () => {
 
                         />
                         <CardContent>
-                            <Box sx={{color: "#d9d9d9"}}  component={'h3'}>Id: {product?.id}</Box>
+                            <Box sx={{color: "#d9d9d9"}} component={'h3'}>Id: {product?.id}</Box>
                             <Box sx={{fontSize: "1em"}} component={'h3'}>
                                 <Typography component={"span"}
                                             sx={{fontSize: '.8em'}}>Nome:</Typography> {product?.name}
                             </Box>
-                            <Box sx={{fontSize: "1em"}}  component={'h3'}>
+                            <Box sx={{fontSize: "1em"}} component={'h3'}>
                                 <Typography component={"span"}
                                             sx={{fontSize: '.8em'}}>Descrição:</Typography> {product?.description}
                             </Box>
-                            <Box sx={{fontSize: "1em"}}  component={'h3'}>
+                            <Box sx={{fontSize: "1em"}} component={'h3'}>
                                 <Typography component={"span"}
                                             sx={{fontSize: '.8em'}}>Tipo:</Typography> {product?.goodsType}
                             </Box>
 
-                            <Box sx={{fontSize: "1em"}}  component={'h3'}>
+                            <Box sx={{fontSize: "1em"}} component={'h3'}>
                                 <Typography component={"span"}
                                             sx={{fontSize: '.8em'}}>Venddido por:</Typography> {product?.user.name}
                             </Box>
-                            <Box sx={{fontSize: "1em"}}  component={'h3'}>
+                            <Box sx={{fontSize: "1em"}} component={'h3'}>
                                 <Typography component={"span"}
                                             sx={{fontSize: '.8em'}}>Telefone:</Typography> {product?.user.phoneNumber}
                             </Box>
-                            <Box sx={{fontSize: "1em"}}  component={'h3'}>
+                            <Box sx={{fontSize: "1em"}} component={'h3'}>
                                 <Typography component={"span"}
-                                            sx={{fontSize: '.8em'}}>E-mail:</Typography> <a href={`mailto:${product?.user.email}`}>{product?.user.email}</a>
+                                            sx={{fontSize: '.8em'}}>E-mail:</Typography> <a
+                                href={`mailto:${product?.user.email}`}>{product?.user.email}</a>
                             </Box>
 
-                            <Box sx={{mt: "32px"}}  component={'h3'}>
+                            <Box sx={{mt: "32px"}} component={'h3'}>
                                 <Box sx={{fontSize: "1em"}}>
                                     <Typography component={"span"}
                                                 sx={{fontSize: '.8em'}}>Preço:</Typography> {product?.price}
                                 </Box>
+                                <Box sx={{fontSize: "1em"}}>
+                                    <Typography component={"span"}
+                                                sx={{fontSize: '.8em'}}>Avaliability:</Typography> {product?.inStock}
+                                </Box>
 
                                 <Box>
-                                    <IconButton><Remove/></IconButton>
-                                    <Input type={"text"} defaultValue={0}/>
-                                    <IconButton><Add/></IconButton>
+                                    <IconButton onClick={() => {
+                                        if (quantity > 0) {
+                                            setQuantity(quantity - 1)
+                                        }
+                                        return
+                                    }}><Remove/></IconButton>
+                                    <Input type={"text"} value={quantity} onChange={(e) => {
+                                        if (Number(e.target.value) > product?.inStock) {
+                                            setQuantity(Number(product?.inStock))
+                                            return
+                                        }
+                                        setQuantity(Number(e.target.value))
+                                    }}/>
+                                    <IconButton onClick={() => {
+                                        if (quantity < product?.inStock) {
+                                            setQuantity(quantity + 1)
+                                        }
+
+                                    }}><Add/></IconButton>
                                     <Button>
                                         <ShoppingCartOutlined/>
                                         Add to cart
@@ -83,10 +107,10 @@ const ProductDetails = () => {
                     </Box>
                 </Card>
 
-                <Box sx={{mt:"64px"}}>
+                <Box sx={{mt: "64px"}}>
                     <Typography component={"h5"}>Related products</Typography>
 
-                    <Box sx={{display: "flex", gap:16, justifyContent: "center"}} component={"ul"}>
+                    <Box sx={{display: "flex", gap: 16, justifyContent: "center"}} component={"ul"}>
 
                         <li>Produto</li>
                         <li>Produto</li>
@@ -101,7 +125,7 @@ const ProductDetails = () => {
                 <Box>
                     <Typography component={"h5"}>Products from same seller</Typography>
 
-                    <Box sx={{display: "flex", gap:16, justifyContent: "center"}} component={"ul"}>
+                    <Box sx={{display: "flex", gap: 16, justifyContent: "center"}} component={"ul"}>
 
                         <li>Produto</li>
                         <li>Produto</li>
