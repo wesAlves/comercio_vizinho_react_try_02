@@ -33,7 +33,13 @@ const ProductDetails = () => {
         // #TODO: Create a find funtcion to replace here
         console.log(findIndexById(product?.id))
         if (findIndexById(product?.id) === -1) {
-            shopCart.push(product)
+            const {id, price} = product;
+
+            const shopCartDTO = {
+                quantity: 1,
+                id, price
+            }
+            shopCart.push(shopCartDTO)
         }
         console.log(shopCart)
 
