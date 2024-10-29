@@ -36,7 +36,7 @@ const ProductDetails = () => {
             const {id, price} = product;
 
             const shopCartDTO = {
-                quantity: 1,
+                quantity: quantity,
                 id, price
             }
             shopCart.push(shopCartDTO)
