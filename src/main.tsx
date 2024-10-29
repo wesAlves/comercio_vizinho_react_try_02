@@ -17,24 +17,9 @@ import {ProductsPage} from "./pages/products";
 import {Index} from "./pages/home";
 import {ServicesPage} from "./pages/services";
 import {ProductDetails} from "./pages/products/details.tsx";
+import {router} from "./routes/root.tsx";
 
-const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <App/>,
-        errorElement: <ErrorPage404/>,
-        children: [
-            {path: "/", element: <Index/>},
-            {
-                path: "/products", element: <ProductsPage/>,
-            },
-            {path: "/products/:productId", element: <ProductDetails />},
-            {
-                path: "/services", element: <ServicesPage/>
-            }
-        ]
-    },
-]);
+
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>

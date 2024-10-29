@@ -1,6 +1,7 @@
 import {AppBar, Avatar, IconButton, Toolbar, Typography} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import {ShoppingCartOutlined} from "@mui/icons-material";
+import {Link} from "react-router-dom";
 
 export function CustomAppBar(props: { onClick: () => void }) {
     return <AppBar elevation={0}
@@ -28,9 +29,11 @@ export function CustomAppBar(props: { onClick: () => void }) {
             <Typography variant="h6" component="div" sx={{flexGrow: 1}}>
                 Comercio vizinho
             </Typography>
-            <IconButton sx={{mr: "8px", border: "2px solid #c2c2c2", background: "#F4F4F4"}}>
-                <ShoppingCartOutlined sx={{color: "#c2c2c2"}}/>
-            </IconButton>
+            <Link to={"/shopcart"}>
+                <IconButton sx={{mr: "8px", border: "2px solid #c2c2c2", background: "#F4F4F4"}}>
+                    <ShoppingCartOutlined sx={{color: "#c2c2c2"}}/>
+                </IconButton>
+            </Link>
             <Avatar>
                 WB
             </Avatar>
