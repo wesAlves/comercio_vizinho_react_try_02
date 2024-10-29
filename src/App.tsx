@@ -4,6 +4,7 @@ import {Box,} from "@mui/material";
 import {CustomAppBar} from "./components/CustomAppBar.tsx";
 import {MainMenu} from "./components/MainMenu.tsx";
 import {Outlet} from "react-router-dom";
+import {ShopCartType, ShopCart} from "./contexts/shopCart/shopCart.ts";
 
 
 function App() {
@@ -14,8 +15,12 @@ function App() {
     const handleOpen = () => {
         setOpen(!open);
     }
+    const [shopCart, setShopCart] = useState<ShopCartType[]>([{id: "0"}, {id:"1"}]);
+
+
 
     return (
+        <ShopCart.Provider value={shopCart}>
         <Box sx={{display: "flex", flexDirection: "column", height: "100vh"}}>
             <CustomAppBar onClick={handleOpen}/>
 
@@ -29,6 +34,7 @@ function App() {
             </Box>
 
         </Box>
+        </ShopCart.Provider>
     )
 }
 

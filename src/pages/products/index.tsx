@@ -14,9 +14,6 @@ const ProductsPage = () => {
         })
     }, [])
 
-    console.log(products)
-
-
     return (
         <>
             <PageTitleBar title={"Produtos"}/>

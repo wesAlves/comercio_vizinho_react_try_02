@@ -1,9 +1,9 @@
 import {PageTitleBar} from "../../components/pageTitleBar.tsx";
 import {useContext, useEffect, useState} from "react";
-import {useLocation, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import cv_api from "../../apis/cv_api.ts";
 import {Box, Button, Card, CardContent, CardMedia, IconButton, Input, Typography} from "@mui/material";
-import {Add, PlusOne, Remove, ShoppingCart, ShoppingCartOutlined, TextIncrease} from "@mui/icons-material";
+import {Add, Remove, ShoppingCartOutlined} from "@mui/icons-material";
 import {ShopCart} from "../../contexts/shopCart/shopCart.ts";
 
 const ProductDetails = () => {

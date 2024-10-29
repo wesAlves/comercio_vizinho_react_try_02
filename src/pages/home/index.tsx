@@ -1,10 +1,7 @@
-import {Box, Button, IconButton, Typography} from "@mui/material";
-import {SearchOutlined} from "@mui/icons-material";
+import {Box} from "@mui/material";
 import {HomeCard} from "../../components/homeCard.tsx";
 import {PageTitleBar} from "../../components/pageTitleBar.tsx";
 import cv_api from "../../apis/cv_api.ts";
-import {ShopCart, ShopCartType} from "../../contexts/shopCart/shopCart.ts";
-import {useState} from "react";
 
 const homeCards = [
     {
@@ -73,9 +70,8 @@ export function Index() {
         return response
     })
 
-    const [shopCart, setShopCart] = useState<ShopCartType[]>([{id: "0"}, {id:"1"}]);
 
-    return (<ShopCart.Provider value={shopCart}>
+    return (<>
             <Box sx={{width: "100%", flex: 1}}>
                 <PageTitleBar title={"Home"}/>
 
@@ -114,6 +110,6 @@ export function Index() {
                     })}
                 </Box>
             </Box>
-        </ShopCart.Provider>
+        </>
     );
 }
