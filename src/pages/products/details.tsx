@@ -26,9 +26,16 @@ const ProductDetails = () => {
     }, [productId])
 
 
+    const findIndexById = (productId: number | string) => shopCart.findIndex(product => product.id === productId)
+
+
     const addToCart = () => {
-        shopCart.push(product?.id)
-        console.log("context", shopCart)
+        // #TODO: Create a find funtcion to replace here
+        console.log(findIndexById(product?.id))
+        if (findIndexById(product?.id) === -1) {
+            shopCart.push(product)
+        }
+        console.log(shopCart)
 
     }
 
