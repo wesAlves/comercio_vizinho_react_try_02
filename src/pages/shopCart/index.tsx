@@ -6,7 +6,7 @@ import {Box, Button, Card, CardContent, Typography} from "@mui/material";
 const ShopCartPage = () => {
 
     const shopCart = useContext(ShopCart)
-    const [productsInCart, setProductsInCart] = useState<[][]>([...shopCart])
+    const [productsInCart, setProductsInCart] = useState([...shopCart])
 
     // TODO: isolate that function in some place that could be accessed to other components
     const findIndexById = (productId: number | string) => shopCart.findIndex(product => product.id === productId)
@@ -26,7 +26,7 @@ const ShopCartPage = () => {
 
     }
     useEffect(() => {
-        setProductsInCart(shopCart)
+        setProductsInCart([...shopCart])
     }, shopCart)
 
     return (
