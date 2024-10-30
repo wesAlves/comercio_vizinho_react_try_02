@@ -15,7 +15,7 @@ function App() {
     const handleOpen = () => {
         setOpen(!open);
     }
-    const [shopCart, setShopCart] = useState<ShopCartType[]>([{id: "0"}, {id:"1"}]);
+    const [shopCart, setShopCart] = useState<ShopCartType[]>([]);
 
 
 

@@ -24,10 +24,9 @@ const ShopCartPage = () => {
         }
         shopCart.splice(productToRemoveIndex, 1)
 
-    }
-    useEffect(() => {
         setProductsInCart([...shopCart])
-    }, shopCart)
+
+    }
 
     return (
         <>
@@ -35,7 +34,7 @@ const ShopCartPage = () => {
             <PageTitleBar title={"Shop Cart"}/>
 
             <div>
-                {productsInCart.map(product => {
+                {shopCart.map(product => {
                     return (
                         // TODO: Use the card component and make some changes there to fit that case
                         <Card sx={{
