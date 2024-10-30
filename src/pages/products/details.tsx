@@ -31,7 +31,6 @@ const ProductDetails = () => {
     const findIndexById = (productId: number | string) => shopCart.findIndex(product => product.id === productId)
     const addToCart = () => {
         // #TODO: Create a find funtcion to replace here
-        console.log(findIndexById(product?.id))
         if (findIndexById(product?.id) === -1) {
             const {id, price, name} = product;
 
@@ -41,7 +40,6 @@ const ProductDetails = () => {
             }
             shopCart.push(shopCartDTO)
         }
-        console.log(shopCart)
 
     }
 

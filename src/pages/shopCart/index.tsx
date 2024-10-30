@@ -1,11 +1,12 @@
 import {PageTitleBar} from "../../components/pageTitleBar.tsx";
-import {useContext} from "react";
+import {useContext, useEffect, useState} from "react";
 import {ShopCart, ShopCartType} from "../../contexts/shopCart/shopCart.ts";
 import {Box, Button, Card, CardContent, Typography} from "@mui/material";
 
 const ShopCartPage = () => {
 
     const shopCart = useContext(ShopCart)
+    const [productsInCart, setProductsInCart] = useState<[][]>([...shopCart])
 
     // TODO: isolate that function in some place that could be accessed to other components
     const findIndexById = (productId: number | string) => shopCart.findIndex(product => product.id === productId)
@@ -22,16 +23,19 @@ const ShopCartPage = () => {
             return;
         }
         shopCart.splice(productToRemoveIndex, 1)
-    }
 
-    console.log(shopCart)
+    }
+    useEffect(() => {
+        setProductsInCart(shopCart)
+    }, shopCart)
+
     return (
         <>
             {/*Create flags to remove unecessary actions*/}
             <PageTitleBar title={"Shop Cart"}/>
 
             <div>
-                {shopCart.map(product => {
+                {productsInCart.map(product => {
                     return (
                         // TODO: Use the card component and make some changes there to fit that case
                         <Card sx={{
@@ -52,7 +56,7 @@ const ShopCartPage = () => {
                                 </Box>
                             </CardContent>
 
-                            <Button>Remove from cart</Button>
+                            <Button onClick={() => removeCart(product.id, product.quantity)}>Remove from cart</Button>
                         </Card>
                     )
 
