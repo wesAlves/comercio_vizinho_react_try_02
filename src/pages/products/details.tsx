@@ -26,9 +26,9 @@ const ProductDetails = () => {
     }, [productId])
 
 
+
+    // TODO: isolate those functions in some place that could be accessed to other components
     const findIndexById = (productId: number | string) => shopCart.findIndex(product => product.id === productId)
-
-
     const addToCart = () => {
         // #TODO: Create a find funtcion to replace here
         console.log(findIndexById(product?.id))
